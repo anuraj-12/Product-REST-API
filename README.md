@@ -1,73 +1,58 @@
 # Product Management REST API
 
-A REST API for managing products built with **Node.js, Express.js, MongoDB, and Mongoose**. This project was created to practice backend development, REST API design, authentication, database operations, filtering, sorting, and pagination.
+A REST API for product management built with **Node.js, Express.js, MongoDB, and Mongoose**. The project includes authentication, role-based authorization, CRUD operations, product search, filtering, sorting, and pagination.
 
 ## 🚀 Features
+
+### Authentication
 
 * User Registration
 * User Login
 * JWT Authentication
 * Access Token & Refresh Token
 * Logout
-* Product CRUD Operations
-* Get Single Product
-* Search Products by Name
-* Filter Products by Price
-* Sort Products by Price
-* Pagination
-* Request Validation
-* Error Handling
-* HTTP-only Cookies for Refresh Token
+* HTTP-only Cookie for Refresh Token
 
-## 🛠️ Technologies Used
+### Product Management
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JSON Web Token (JWT)
-* bcryptjs
-* cookie-parser
-* Helmet
-* JavaScript
+* Registered users can view products.
+* Admin can add products.
+* Admin can update products.
+* Admin can delete products.
+* Product search by name.
+* Product price filtering.
+* Product sorting.
+* Product pagination.
 
-## 📁 Project Structure
+### 🔐 Role-Based Authorization
 
-```text
-Server/
-├── config/
-├── controller/
-├── middleware/
-├── model/
-├── routes/
-├── utils/
-├── validator/
-├── .env
-├── app.js
-└── package.json
-```
+The API has two types of users:
 
-## 🔐 Authentication
+**Registered User**
 
-The API uses JWT authentication with two types of tokens:
+* Can access product read/get APIs.
+* Must be authenticated to view products.
 
-* **Access Token** — used to access protected APIs.
-* **Refresh Token** — stored in an HTTP-only cookie and used to generate a new access token when the access token expires.
+**Admin**
+
+* Can add new products.
+* Can update existing products.
+* Can delete products.
+* Can also access product read/get APIs.
 
 ## 📦 Product API
 
-The API supports the following product operations:
+| Method | Endpoint        | Access          | Description          |
+| ------ | --------------- | --------------- | -------------------- |
+| POST   | `/products`     | Admin           | Add a product        |
+| GET    | `/products`     | Registered User | Get products         |
+| GET    | `/products/:id` | Registered User | Get a single product |
+| PATCH  | `/products/:id` | Admin           | Update a product     |
+| DELETE | `/products/:id` | Admin           | Delete a product     |
 
-| Method | Endpoint        | Description          |
-| ------ | --------------- | -------------------- |
-| POST   | `/products`     | Create a product     |
-| GET    | `/products`     | Get all products     |
-| PATCH  | `/products/:id` | Update a product     |
-| DELETE | `/products/:id` | Delete a product     |
+## 🔎 Search
 
-## 🔎 Search Products
-
-Products can be searched using the `name` query parameter.
+Search products by name:
 
 ```text
 GET /products?name=mouse
@@ -75,17 +60,15 @@ GET /products?name=mouse
 
 ## 💰 Price Filtering
 
-Filter products using minimum and maximum prices.
+Filter products by price:
 
 ```text
 GET /products?minPrice=1200&maxPrice=5000
 ```
 
-For example, this can return products between 1200 and 5000.
-
 ## ↕️ Sorting
 
-Products can be sorted in ascending or descending order.
+Sort products by price:
 
 ```text
 GET /products?sort=price-asc
@@ -97,7 +80,7 @@ GET /products?sort=price-desc
 
 ## 📄 Pagination
 
-Pagination is supported using `page` and `limit`.
+Pagination is supported using `page` and `limit`:
 
 ```text
 GET /products?page=1&limit=10
@@ -111,9 +94,21 @@ Page 2 → Products 11–20
 Page 3 → Products 21–30
 ```
 
+## 🛠️ Technologies Used
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT
+* bcryptjs
+* cookie-parser
+* Helmet
+* JavaScript
+
 ## ⚙️ Installation
 
-Clone the repository and install the dependencies:
+Install dependencies:
 
 ```bash
 npm install
@@ -128,19 +123,13 @@ ACCESS_TOKEN=your_access_token_secret
 REFRESH_TOKEN=your_refresh_token_secret
 ```
 
-Start the server:
-
-```bash
-npm start
-```
-
-For development:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The server will run on:
+The API will run on:
 
 ```text
 http://localhost:3000
@@ -148,25 +137,22 @@ http://localhost:3000
 
 ## 📚 What I Practiced
 
-Through this project, I practiced:
-
-* Building REST APIs with Express.js
-* Connecting MongoDB with Mongoose
-* Creating CRUD APIs
-* Working with MongoDB queries
-* Query parameters
+* REST API development
+* Express.js routing
+* MongoDB and Mongoose
+* CRUD operations
+* JWT authentication
+* Access and refresh token handling
+* HTTP-only cookies
+* Role-based authorization
+* MongoDB query filtering
 * Regex search
-* Price filtering
 * Sorting
 * Pagination
-* JWT authentication
-* Access and refresh token flow
-* HTTP-only cookies
 * API error handling
-* Backend project structure
 
 ## 👨‍💻 Author
 
 **Anuraj Gautam**
 
-This project was built as part of my backend and MERN stack learning journey.
+Built as part of my backend and MERN stack learning journey.

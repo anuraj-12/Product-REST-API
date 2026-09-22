@@ -62,7 +62,6 @@ The API supports the following product operations:
 | ------ | --------------- | -------------------- |
 | POST   | `/products`     | Create a product     |
 | GET    | `/products`     | Get all products     |
-| GET    | `/products/:id` | Get a single product |
 | PATCH  | `/products/:id` | Update a product     |
 | DELETE | `/products/:id` | Delete a product     |
 

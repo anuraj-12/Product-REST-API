@@ -46,7 +46,6 @@ The API has two types of users:
 | ------ | --------------- | --------------- | -------------------- |
 | POST   | `/products`     | Admin           | Add a product        |
 | GET    | `/products`     | Registered User | Get products         |
-| GET    | `/products/:id` | Registered User | Get a single product |
 | PATCH  | `/products/:id` | Admin           | Update a product     |
 | DELETE | `/products/:id` | Admin           | Delete a product     |
 

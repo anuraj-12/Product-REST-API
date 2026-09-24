@@ -9,4 +9,5 @@ export const env = {
     REFRESH_TOKEN:process.env.REFRESH_TOKEN,
     ADMIN_EMAIL:process.env.ADMIN_EMAIL,
     ADMIN_PASS:process.env.ADMIN_PASS,
+    UI_URL:process.env.UI_URL
 }

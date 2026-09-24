@@ -62,7 +62,6 @@ export const addProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
     try {
-
         const id = req.params.id
         const product = await Product.deleteOne({ _id: id })
         return res.status(200).json({ message: "Product Delete Successfully.", product })
@@ -87,5 +86,24 @@ export const editProduct = async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: "Server Error" })
+    }
+}
+
+
+export const singleProduct  = async(req, res) =>{
+    try {
+        const {id} = req.params
+        
+        const product = await Product.findById(id)
+        
+         if (!product) {
+            return res.status(404).json({
+                message: "Product not found"
+            });
+        }
+        return res.status(200).json({product})
+
+    } catch (error) {
+        console.log(error)
     }
 }

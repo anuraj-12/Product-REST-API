@@ -9,7 +9,6 @@ router.route("/product").get(productController.getproduct)
 router.route("/add/product").post(authMiddleware, adminMiddleware, productController.addProduct)
 router.route("/delete/product/:id").delete(authMiddleware, adminMiddleware, productController.deleteProduct)
 router.route("/edit/product/:id").patch(authMiddleware, adminMiddleware, productController.editProduct)
-
-
+router.route("/single/:id").get(productController.singleProduct)
 
 export const productRouter = router
